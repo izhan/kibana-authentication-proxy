@@ -1,11 +1,13 @@
 kibana Authentication Proxy
 ============
 
-Hosts the latest [kibana3](www.elasticsearch.org/overview/kibana/) and elasticsearch behind Google OAuth2, Basic Authentication or CAS Authentication with NodeJS and Express.
+A fork of [kibana-authentication-proxy](https://github.com/fangli/kibana-authentication-proxy).
 
-- A proxy between Elasticsearch, kibana3 and user client
+Hosts the latest [Kibana 4 BETA](https://github.com/elasticsearch/kibana/) and elasticsearch behind Google OAuth2, Basic Authentication or CAS Authentication with NodeJS and Express.
+
+- A proxy between Elasticsearch, Kibana 4 BETA and user client
 - Support Elasticsearch which protected by basic authentication, only kibana-authentication-proxy knows the user/passwd
-- Compatible with the latest kibana3
+- Compatible with the latest Kibana 4 BETA
 - Enhanced authentication methods. Now support Google OAuth2, BasicAuth(multiple users supported) and CAS Authentication for the clients
 - Per-user kibana index supported. now you can use index kibana-int-userA for user A and kibana-int-userB for user B
 - Inspired by and based on [kibana-proxy](https://github.com/hmalphettes/kibana-proxy), most of the proxy libraries were written by them, thanks:)
@@ -46,16 +48,19 @@ All settings are placed in /config.js, hack it as you go.
 - ``es_username``:  *(optional) The basic authentication user of ES server, leave it blank if no basic auth applied*
 - ``es_password``:  *(optional) The password of basic authentication of ES server, leave it blank if no basic auth applied*
 
+### Kibana 4 BETA settings
+
+- ``kibana_4_host``: *The host of Kibana 4 server*
+- ``kibana_4_port``: *The port of Kibana 4 server*
+
 ### Client settings
 
-- ``listen_port``:  *The listen port of kibana3*
+- ``listen_port``:  *The listen port of this proxy*
 - ``brower_cache_maxage``:  *The browser cache max-Age controll, for a better loading speed*
 - ``enable_ssl_port``: *Enable SSL or not?*
 - ``listen_port_ssl``: *If enable_ssl_port set to true, this is the port of SSL*
 - ``ssl_key_file``: *Point to the ssl key file*
 - ``ssl_cert_file``: *Point to the ssl certification file*
-- ``kibana_es_index``: *The ES index for saving kibana dashboards, now per-user configurations supported. using %user% instead of the username*
-- ``which_auth_type_for_kibana_index``: *Where the variable %user% comes from? which authentication type you want to use for it?*
 - ``cookie_secret``: *The secret token for cookies. replace it with a random string for security*
 
 ### Client authentication settings

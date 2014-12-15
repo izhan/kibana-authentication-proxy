@@ -30,13 +30,13 @@ require('./lib/cas-auth.js').configureCas(express, app, config);
 require('./lib/es-proxy').configureESProxy(app, config.es_host, config.es_port,
           config.es_username, config.es_password);
 
+// Reverse Proxy to Kibana 4 BETA
 app.use('/', function(req, res) {
   var options =  {
     url: "http://" + config.kibana_4_host + ":" + config.kibana_4_port + req.url
   };
   req.pipe(request(options)).pipe(res);
 });
-
 
 run();
 

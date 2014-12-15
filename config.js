@@ -27,6 +27,8 @@ module.exports =  {
         "ssl_key_file": "POINT_TO_YOUR_SSL_KEY",
         // Use absolute path for the certification file
         "ssl_cert_file": "POINT_TO_YOUR_SSL_CERT",
+    "kibana_4_host": "localhost",
+    "kibana_4_port": 5601,
 
     // The ES index for saving kibana dashboards
     // default to "kibana-int"

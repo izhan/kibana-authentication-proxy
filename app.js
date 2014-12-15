@@ -11,6 +11,7 @@ var express = require('express');
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
+var request = require('request');
 
 var config = require('./config');
 var app = express();
@@ -33,9 +34,12 @@ require('./lib/es-proxy').configureESProxy(app, config.es_host, config.es_port,
 // We should use special config.js for the frontend and point the ES to __es/
 app.get('/config.js', kibana3configjs);
 
-// Serve all kibana3 frontend files
-app.use(express.compress());
-app.use('/', express.static(__dirname + '/kibana/src', {maxAge: config.brower_cache_maxage || 0}));
+app.use('/', function(req, res) {
+  var options =  {
+    url: "http://" + config.kibana_4_host + ":" + config.kibana_4_port + req.url
+  };
+  req.pipe(request(options)).pipe(res);
+});
 
 
 run();

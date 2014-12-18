@@ -29,6 +29,8 @@ module.exports =  {
         "ssl_cert_file": "POINT_TO_YOUR_SSL_CERT",
     "kibana_4_host": "localhost",
     "kibana_4_port": 5601,
+    "google_callback_url": "localhost:9201",
+    "google_oauth_protocol": "https",
 
     // The ES index for saving kibana dashboards
     // default to "kibana-int"
